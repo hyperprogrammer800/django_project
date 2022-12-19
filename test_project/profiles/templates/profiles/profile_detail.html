@@ -1,0 +1,23 @@
+{% extends "profiles/base.html" %}
+{% block content %}
+<article class="media content-section">
+  <img class="rounded-circle article-img" src="{{ profile_detail.picture.url }}">
+  <div class="media-body">
+    <div class="article-metadata">
+      <h1 class="mr-2">
+        {% if profile_detail.user.account.first_name %}
+        {{ profile_detail.user.account.title }} {{ profile_detail.user.account.first_name }} {{ profile_detail.user.account.last_name }} {{ profile_detail.user.account.short_name }}
+        {% else %}
+        {{ profile_detail.user.username }}
+        {% endif %}
+      </h1>
+      {% if profile_detail.contact %}
+      <mark>Contact : +{{ profile_detail.contact_ext }}-{{ profile_detail.contact }}</mark>
+      {% endif %}
+    </div>
+    <h2 class="article-title">{{ profile_detail.team }}</h2>
+    <h3 class="article-title">{{ profile_detail.jobtitle }}</h3>
+    <small class="text-muted">Last Login : {{ profile_detail.lastlogin|date:profile_detail.dateformat }}</small>
+  </div>
+</article>
+{% endblock %}

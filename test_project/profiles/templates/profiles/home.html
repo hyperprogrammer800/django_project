@@ -1,0 +1,13 @@
+{% extends "profiles/base.html" %}
+{% block content %}
+<ul class="list-group">
+  {% for profiles in profile_list %}
+  <li class="list-group-item">
+    <a class="mr-2" href="{% url 'profile-detail' profiles.pk %}">
+      {{ profiles.user }}
+    </a>
+    <small class="text-muted">joined : {{ profiles.join_date|date:profiles.join_dateformat}} </small>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
